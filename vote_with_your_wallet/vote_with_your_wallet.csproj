@@ -193,6 +193,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Header.cshtml" />
     <Content Include="Views\Home\Causes.cshtml" />
+    <Content Include="Views\Home\NewCauseModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

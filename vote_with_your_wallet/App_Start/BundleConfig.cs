@@ -27,6 +27,7 @@ namespace vote_with_your_wallet
                       "~/Scripts/jquery.easing.min.js",
                       "~/Scripts/modernizr-2.6.2.js",
                       "~/Scripts/jquery.magnific-popup.min.js",
+                      "~/Scripts/scrollreveal.min.js",
                       "~/Scripts/creative.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

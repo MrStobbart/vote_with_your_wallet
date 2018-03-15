@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "NewCauseModal";
+}
+
+<div class="modal fade" id="new-cause-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create a new caue</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="cause-name">Write your petition title</label>
+                        <input type="text" class="form-control" id="cause-name" placeholder="What do you want to archieve?">
+                    </div>
+                    <div class="form-group">
+                        <label for="cause-name">Choose a decision maker</label>
+                        <input type="text" class="form-control" id="cause-name" placeholder="Who can make this happen?">
+                    </div>
+                    <div class="form-group">
+                        <label for="cause-description">Description</label>
+                        <textarea class="form-control" id="cause-description" rows="7"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+

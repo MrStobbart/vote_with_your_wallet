@@ -192,6 +192,8 @@
     <Content Include="Views\Home\NewCauseModal.cshtml" />
     <Content Include="Views\Home\SignUpModal.cshtml" />
     <Content Include="Views\Home\LoginModal.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Information.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

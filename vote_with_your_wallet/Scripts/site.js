@@ -75,4 +75,36 @@
         $('#' + targetBaseId + '-names > tbody > tr:first').before('<tr><td scope= "row" >Peter Barclay</td></tr>');
     });
 
+    window.addEventListener('load', function () {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = $('.needs-validation'); 
+        
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function (form) {
+
+            // Input validation while typing
+            form.addEventListener('input', function (event) {
+                if (event.target.checkValidity() === false) {
+                    event.target.classList.add('is-invalid');
+                } else {
+                    event.target.classList.remove('is-invalid');
+                    event.target.classList.add('is-valid');
+                }
+
+            }, false);
+
+            // Input validation and close blocking on submit
+            form.addEventListener('submit', function (event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+
+       
+
+    }, false);
+
 })(jQuery); // End of use strict

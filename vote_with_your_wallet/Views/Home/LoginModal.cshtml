@@ -12,22 +12,31 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <form>
+            <form class="needs-validation" novalidate>
+                <div class="modal-body">
+
                     <div class="form-group">
                         <label for="login-mail">E-mail address</label>
-                        <input type="email" class="form-control" id="login-mail" placeholder="example@outlook.com">
+                        <input type="email" class="form-control" id="login-mail" placeholder="example@outlook.com" required>
+                        <div class="invalid-feedback">
+                            Please enter an email address
+                        </div>
                     </div>
+
                     <div class="form-group">
                         <label for="login-password">Password</label>
-                        <input type="password" class="form-control" id="login-password" placeholder="password">
+                        <input type="password" class="form-control" id="login-password" placeholder="password" required>
+                        <div class="invalid-feedback">
+                            Please enter a password
+                        </div>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Abort</button>
-                <button id="submit-login" type="button" class="btn btn-primary" data-dismiss="modal" >Login</button>
-            </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Abort</button>
+                    <button id="submit-login" type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

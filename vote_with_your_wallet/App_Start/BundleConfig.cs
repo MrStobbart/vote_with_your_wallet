@@ -26,14 +26,11 @@ namespace vote_with_your_wallet
             bundles.Add(new ScriptBundle("~/bundles/modules").Include(
                       "~/Scripts/jquery.easing.min.js",
                       "~/Scripts/modernizr-2.6.2.js",
-                      "~/Scripts/jquery.magnific-popup.min.js",
-                      "~/Scripts/scrollreveal.min.js",
-                      "~/Scripts/creative.js"));
+                      "~/Scripts/site.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/magnific-popup.css",
-                      "~/Content/creative.css"));
+                      "~/Content/site.css"));
         }
     }
 }

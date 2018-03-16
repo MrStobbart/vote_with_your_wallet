@@ -72,4 +72,21 @@
     }
   });
 
+  $('#submit-login').on('click', function () {
+      console.log('submit login')
+      $('#login-toggle').text('Logout')
+      $('#sign-up').addClass('d-none')
+  });
+
+  $('#login-toggle').on('click', function () {
+
+      if ($('#login-toggle').text() === 'Login') {
+          $('#login-modal').modal('show');
+      } else {
+          $('#login-toggle').text('Login')
+          $('#sign-up').removeClass('d-none')
+      }
+      
+  });
+
 })(jQuery); // End of use strict

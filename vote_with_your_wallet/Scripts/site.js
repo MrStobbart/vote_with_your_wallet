@@ -26,7 +26,7 @@
     offset: 57
   });
 
-  // Collapse Navbar
+  // Collapse Navbar for different styled navbar when scrolling down
   var navbarCollapse = function() {
     if ($("#mainNav").offset().top > 100) {
       $("#mainNav").addClass("navbar-shrink");
@@ -57,6 +57,20 @@
           $('#sign-up').removeClass('d-none')
       }
       
+  });
+
+// Update supporter when cause is supported 
+  $('.support-button').on('click', function () {
+      var targetBaseId = $(this).attr('for')
+
+      // Update supporter count
+      var targetCountIt = targetBaseId + '-cnt';
+      var currentCount = $('#' + targetCountIt).text();
+      var newCount = parseInt(currentCount) + 1;
+      $('#' + targetCountIt).text(newCount)
+
+      // Add name to the beginning of supporters (static atm)
+      $('#' + targetBaseId + '-names > tbody > tr:first').before('<tr><td scope= "row" >Peter Barclay</td></tr>');
   });
 
 })(jQuery); // End of use strict

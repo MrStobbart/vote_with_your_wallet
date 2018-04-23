@@ -1,4 +1,5 @@
-﻿
+﻿@using vote_with_your_wallet.Models
+@model RegisterViewModel
 @{
     ViewBag.Title = "SignUpModal";
 }
@@ -12,43 +13,37 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form class="needs-validation" novalidate>
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
                 <div class="modal-body">
-
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
                     <div class="form-group">
-                        <label for="sign-up-name">Your name</label>
-                        <input type="text" class="form-control" id="sign-up-name" placeholder="John Smith" required>
-                        <div class="invalid-feedback">
-                            Please enter a name
-                        </div>
+                        @Html.LabelFor(model => model.Name)
+                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "John Smith" })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "invalid-feedback" })
                     </div>
                     <div class="form-group">
-                        <label for="sign-up-mail">E-mail address</label>
-                        <input type="email" class="form-control" id="sign-up-mail" placeholder="example@outlook.com" required>
-                        <div class="invalid-feedback">
-                            Please enter an email address
-                        </div>
+                        @Html.LabelFor(model => model.Email)
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control",  placeholder = "example@outlook.com" })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "invalid-feedback" })
                     </div>
                     <div class="form-group">
-                        <label for="sign-up-password">Password</label>
-                        <input type="password" class="form-control" id="sign-up-password" placeholder="" required>
-                        <div class="invalid-feedback">
-                            Please enter a password
-                        </div>
+                        @Html.LabelFor(model => model.Password)
+                        @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "invalid-feedback" })
                     </div>
                     <div class="form-group">
-                        <label for="sign-up-password-repeat">Repeat password</label>
-                        <input type="password" class="form-control" id="sign-up-password-repeat" placeholder="" required>
-                        <div class="invalid-feedback">
-                            Please repeat the password
-                        </div>
+                        @Html.LabelFor(model => model.ConfirmPassword)
+                        @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "invalid-feedback" })
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Abort</button>
-                    <button type="submit" class="btn btn-primary" >Sign Up</button>
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
                 </div>
-            </form>
+            }
         </div>
     </div>
 </div>

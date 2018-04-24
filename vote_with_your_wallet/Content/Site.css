@@ -285,7 +285,6 @@ header.masthead p {
 }
 
 .btn {
-    text-transform: uppercase;
     border: none;
     border-radius: 300px;
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
@@ -313,7 +312,8 @@ header.masthead p {
     color: #fff !important;
 }
 
-.btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
+
+-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
     color: #fff !important;
     background-color: #343a40 !important;
 }

@@ -17,6 +17,7 @@ namespace vote_with_your_wallet.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        
 
         public AccountController()
         {
@@ -70,7 +71,7 @@ namespace vote_with_your_wallet.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return RedirectToAction("Index", "Home");
             }
 
             // This doesn't count login failures towards account lockout
@@ -87,7 +88,7 @@ namespace vote_with_your_wallet.Controllers
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                    return RedirectToAction("Index", "Home");
             }
         }
 

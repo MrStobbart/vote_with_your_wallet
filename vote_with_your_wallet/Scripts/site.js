@@ -41,26 +41,19 @@
     // Call navbarCollapse when page is scrolled
     $(window).scroll(navbarCollapse);
 
-
+    /*
     // Change header when user is logged in
     $('#submit-login').on('click', function () {
         console.log('submit login')
         $('#login-toggle').text('Logout')
         $('#sign-up').addClass('d-none')
     });
-
-    // Reset navbar on logout / show modal on login
-    $('#login-toggle').on('click', function () {
-
-        if ($('#login-toggle').text() === 'Login') {
-            $('#login-modal').modal('show');
-        } else {
-            $('#login-toggle').text('Login')
-            $('#sign-up').removeClass('d-none')
-        }
-      
+    */
+    // Reset show modal on login button click
+    $('#login-button').on('click', function () {
+        $('#login-modal').modal('show');
     });
-
+    
     // Update supporter when cause is supported 
     $('.support-button').on('click', function () {
         var targetBaseId = $(this).attr('for')
@@ -74,6 +67,23 @@
         // Add name to the beginning of supporters (static atm)
         $('#' + targetBaseId + '-names > tbody > tr:first').before('<tr><td scope= "row" >Peter Barclay</td></tr>');
     });
+
+    // Logout on button click logout
+    $("#logout-button").on('click', function () {
+        var request = $.ajax({
+            type: 'POST',
+            url: '/Account/LogOff',
+            
+        })
+
+        request.done(function (message) {
+            console.log("Logout done")
+        })
+
+        request.fail(function () {
+            console.log('logout fail')
+        })
+    })
 
     window.addEventListener('load', function () {
         // Fetch all the forms we want to apply custom Bootstrap validation styles to

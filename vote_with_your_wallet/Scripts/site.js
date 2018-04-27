@@ -78,6 +78,7 @@
 
         request.done(function (message) {
             console.log("Logout done")
+            location.reload(true)
         })
 
         request.fail(function () {

@@ -71,7 +71,7 @@ namespace vote_with_your_wallet.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home", model);
             }
 
             // This doesn't count login failures towards account lockout

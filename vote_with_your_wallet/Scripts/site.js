@@ -41,14 +41,6 @@
     // Call navbarCollapse when page is scrolled
     $(window).scroll(navbarCollapse);
 
-    /*
-    // Change header when user is logged in
-    $('#submit-login').on('click', function () {
-        console.log('submit login')
-        $('#login-toggle').text('Logout')
-        $('#sign-up').addClass('d-none')
-    });
-    */
     // Reset show modal on login button click
     $('#login-button').on('click', function () {
         $('#login-modal').modal('show');
@@ -77,7 +69,6 @@
         })
 
         request.done(function (message) {
-            console.log("Logout done")
             location.reload(true)
         })
 

@@ -65,7 +65,7 @@ namespace vote_with_your_wallet.Models
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "Name")]
+        [Display(Name = "Full Name")]
         public string Name { get; set; }
 
         [Required]

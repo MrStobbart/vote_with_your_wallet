@@ -106,4 +106,5 @@ namespace vote_with_your_wallet
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
         }
     }
+
 }

@@ -197,6 +197,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804241217567_InitialCreate.cs" />
+    <Compile Include="Migrations\201804241217567_InitialCreate.Designer.cs">
+      <DependentUpon>201804241217567_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804271306445_accountType.cs" />
+    <Compile Include="Migrations\201804271306445_accountType.Designer.cs">
+      <DependentUpon>201804271306445_accountType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -235,7 +244,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -273,6 +284,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Navigation\" />
+    <Folder Include="Views\Role\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -285,6 +297,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201804241217567_InitialCreate.resx">
+      <DependentUpon>201804241217567_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804271306445_accountType.resx">
+      <DependentUpon>201804271306445_accountType.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

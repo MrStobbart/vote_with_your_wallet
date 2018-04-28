@@ -6,7 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using vote_with_your_wallet.Models;
-using vote_with_your_wallet.DbContexts;
+using vote_with_your_wallet.Entities;
 
 namespace vote_with_your_wallet
 {
@@ -16,7 +16,7 @@ namespace vote_with_your_wallet
         public void ConfigureAuth(IAppBuilder app)
         {
             // Configure the db context, user manager and signin manager to use a single instance per request
-            app.CreatePerOwinContext(IdentityDb.Create);
+            app.CreatePerOwinContext(ApplicationDb.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 

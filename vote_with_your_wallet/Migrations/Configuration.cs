@@ -5,15 +5,14 @@ namespace vote_with_your_wallet.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<vote_with_your_wallet.DbContexts.IdentityDb>
+    internal sealed class Configuration : DbMigrationsConfiguration<vote_with_your_wallet.Models.ApplicationDb>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "vote_with_your_wallet.Models.ApplicationDbContext";
         }
 
-        protected override void Seed(vote_with_your_wallet.DbContexts.IdentityDb context)
+        protected override void Seed(vote_with_your_wallet.Models.ApplicationDb context)
         {
             //  This method will be called after migrating to the latest version.
 

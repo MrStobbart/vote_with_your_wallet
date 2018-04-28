@@ -11,7 +11,6 @@ namespace vote_with_your_wallet.Controllers
         // GET: Navigation
         public ActionResult Index()
         {
-            ViewBag.Test = true;
             return RedirectToAction("Index", "Home");
         }
     }

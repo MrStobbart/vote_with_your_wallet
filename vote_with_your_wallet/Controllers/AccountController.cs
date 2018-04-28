@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using vote_with_your_wallet.Models;
+using vote_with_your_wallet.Entities;
 
 namespace vote_with_your_wallet.Controllers
 {
@@ -176,7 +177,8 @@ namespace vote_with_your_wallet.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            TempData["RegisterViewModel"] = model;
+            return RedirectToAction("Index", "Home");
         }
 
         //

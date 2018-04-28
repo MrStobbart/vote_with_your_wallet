@@ -190,27 +190,25 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CausesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NavigationController.cs" />
-    <Compile Include="DbContexts\CausesDb.cs" />
-    <Compile Include="DbContexts\IdentityDb.cs" />
+    <Compile Include="Migrations\201804281137344_InitialCreate.cs" />
+    <Compile Include="Migrations\201804281137344_InitialCreate.Designer.cs">
+      <DependentUpon>201804281137344_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ApplicationDb.cs" />
     <Compile Include="Entities\Cause.cs" />
     <Compile Include="Enums\AccountType.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804241217567_InitialCreate.cs" />
-    <Compile Include="Migrations\201804241217567_InitialCreate.Designer.cs">
-      <DependentUpon>201804241217567_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804271306445_accountType.cs" />
-    <Compile Include="Migrations\201804271306445_accountType.Designer.cs">
-      <DependentUpon>201804271306445_accountType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Entities\ApplicationUser.cs" />
+    <Compile Include="Models\CauseViewModel.cs" />
+    <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NavigationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -223,7 +221,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="ApplicationInsights.config" />
+    <Content Include="ApplicationInsights.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -286,6 +286,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Causes\" />
     <Folder Include="Views\Navigation\" />
     <Folder Include="Views\Role\" />
   </ItemGroup>
@@ -302,11 +303,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201804241217567_InitialCreate.resx">
-      <DependentUpon>201804241217567_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804271306445_accountType.resx">
-      <DependentUpon>201804271306445_accountType.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804281137344_InitialCreate.resx">
+      <DependentUpon>201804281137344_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

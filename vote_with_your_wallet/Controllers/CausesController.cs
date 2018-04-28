@@ -40,7 +40,7 @@ namespace vote_with_your_wallet.Controllers
         // GET: Causes/Create
         public ActionResult Create()
         {
-            return View();
+            return RedirectToAction("Index", "Home");
         }
 
         // POST: Causes/Create
@@ -48,16 +48,22 @@ namespace vote_with_your_wallet.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Title,Description")] Cause cause)
+        public async Task<ActionResult> Create(CauseViewModel model)
         {
             if (ModelState.IsValid)
             {
+                Cause cause = new Cause();
+                cause.Title = model.Title;
+                cause.CauseTarget = model.CauseTarget;
+                cause.Description = model.Description;
+
                 db.Causes.Add(cause);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
 
-            return View(cause);
+            TempData["CauseViewModel"] = model;
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: Causes/Edit/5
@@ -80,7 +86,7 @@ namespace vote_with_your_wallet.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,Description")] Cause cause)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Title,CauseTarget,Description")] Cause cause)
         {
             if (ModelState.IsValid)
             {

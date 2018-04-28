@@ -15,9 +15,9 @@ namespace vote_with_your_wallet.Models
 
         public HomeViewModel()
         {
-            this.CauseViewModel = new CauseViewModel();
-            this.RegisterViewModel = new RegisterViewModel();
-            this.LoginViewModel = new LoginViewModel();
+            CauseViewModel = new CauseViewModel();
+            RegisterViewModel = new RegisterViewModel();
+            LoginViewModel = new LoginViewModel();
         }
     }
 }

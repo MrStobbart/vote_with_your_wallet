@@ -1,4 +1,6 @@
-﻿@{
+﻿@using vote_with_your_wallet.Models
+@model CauseViewModel
+@{
     ViewBag.Title = "NewCauseModal";
 }
 
@@ -11,26 +13,33 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <form>
+            @using (Html.BeginForm("Create", "Causes", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
                     <div class="form-group">
-                        <label for="cause-name">Write your petition title</label>
-                        <input type="text" class="form-control" id="cause-name" placeholder="What do you want to archieve?">
+                        @Html.LabelFor(Model => Model.Title)
+                        @Html.TextBoxFor(Model => Model.Title, new { @class = "form-control", placeholder = "What do you want to archieve?" })
+                        @Html.ValidationMessageFor(Model => Model.Title, "", new { @class = "invalid-feedback" })
                     </div>
                     <div class="form-group">
-                        <label for="cause-name">Choose a decision maker</label>
-                        <input type="text" class="form-control" id="cause-target" placeholder="Who can make this happen?">
+                        @Html.LabelFor(Model => Model.CauseTarget)
+                        @Html.TextBoxFor(Model => Model.CauseTarget, new { @class = "form-control", placeholder = "Who can make this happen?" })
+                        @Html.ValidationMessageFor(Model => Model.CauseTarget, "", new { @class = "invalid-feedback" })
                     </div>
                     <div class="form-group">
-                        <label for="cause-description">Description</label>
-                        <textarea class="form-control" id="cause-description" rows="7"></textarea>
+                        @Html.LabelFor(Model => Model.Description)
+                        @Html.TextAreaFor(Model => Model.Description, 10, 55, new { @class = "form-control", placeholder = "Describe the goals and challenges of the cause" })
+                        @Html.ValidationMessageFor(Model => Model.Description, "", new { @class = "invalid-feedback" })
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
-            </div>
+                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save new cause</button>
+                </div>
+            
+            }
         </div>
     </div>
 </div>

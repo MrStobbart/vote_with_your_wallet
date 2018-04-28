@@ -18,6 +18,8 @@ namespace vote_with_your_wallet.Entities
         [StringLength(100)]
         public string Title { get; set; }
 
+        public string CauseTarget { get; set; }
+
         [Required]
         public string Description { get; set; }
 

@@ -198,6 +198,14 @@
     <Compile Include="Migrations\201804281137344_InitialCreate.Designer.cs">
       <DependentUpon>201804281137344_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804281514223_Add CauseTarget.cs" />
+    <Compile Include="Migrations\201804281514223_Add CauseTarget.Designer.cs">
+      <DependentUpon>201804281514223_Add CauseTarget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804281516019_Add CauseTarget 2.cs" />
+    <Compile Include="Migrations\201804281516019_Add CauseTarget 2.Designer.cs">
+      <DependentUpon>201804281516019_Add CauseTarget 2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDb.cs" />
     <Compile Include="Entities\Cause.cs" />
@@ -305,6 +313,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201804281137344_InitialCreate.resx">
       <DependentUpon>201804281137344_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804281514223_Add CauseTarget.resx">
+      <DependentUpon>201804281514223_Add CauseTarget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804281516019_Add CauseTarget 2.resx">
+      <DependentUpon>201804281516019_Add CauseTarget 2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

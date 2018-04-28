@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using vote_with_your_wallet.Models;
 
 namespace vote_with_your_wallet.Controllers
 {
@@ -25,8 +26,24 @@ namespace vote_with_your_wallet.Controllers
                 }
             }
 
+            HomeViewModel model = new HomeViewModel();
 
-            return View();
+            if(TempData["RegisterViewModel"] != null)
+            {
+                model.RegisterViewModel = (RegisterViewModel)TempData["RegisterViewModel"];
+            }
+
+            if (TempData["LoginViewModel"] != null)
+            {
+                model.LoginViewModel = (LoginViewModel)TempData["LoginViewModel"];
+            }
+
+            if (TempData["CauseViewModel"] != null)
+            {
+                model.CauseViewModel = (CauseViewModel)TempData["CauseViewModel"];
+            }
+
+            return View(model);
         }
 
         private ApplicationUserManager _userManager;

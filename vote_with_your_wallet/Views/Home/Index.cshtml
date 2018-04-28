@@ -1,4 +1,6 @@
-﻿@{
+﻿@using vote_with_your_wallet.Models
+@model HomeViewModel
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -11,6 +13,6 @@
 
 
 <!--Modals-->
-@RenderPage("~/Views/Home/NewCauseModal.cshtml")
-@RenderPage("~/Views/Home/SignUpModal.cshtml")
-@RenderPage("~/Views/Home/LoginModal.cshtml")
+@Html.Partial("~/Views/Home/NewCauseModal.cshtml", Model.CauseViewModel)
+@Html.Partial("~/Views/Home/SignUpModal.cshtml", Model.RegisterViewModel)
+@Html.Partial("~/Views/Home/LoginModal.cshtml", Model.LoginViewModel)

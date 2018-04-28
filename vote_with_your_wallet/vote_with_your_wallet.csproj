@@ -193,6 +193,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NavigationController.cs" />
+    <Compile Include="DbContexts\CausesDb.cs" />
+    <Compile Include="DbContexts\IdentityDb.cs" />
+    <Compile Include="Entities\Cause.cs" />
     <Compile Include="Enums\AccountType.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -89,6 +89,11 @@
         })
     });
 
+    // Delete cause when admin clicked delete button
+    $('.delete-button').on('click', function () {
+        console.log('delete')
+    })
+
     // Logout on button click logout
     $("#logout-button").on('click', function () {
         var request = $.ajax({

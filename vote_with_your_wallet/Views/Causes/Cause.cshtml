@@ -24,6 +24,16 @@
                         </a>
                     </h5>
                 </div>
+                @if (ViewBag.UserAuthenticated == true && ViewBag.IsAdmin == true)
+                {
+                    <div class="col-sm">
+                        <h5 class="mb-1 mt-1">
+                            <a class="btn btn-secondary delete-button" target-cause="@Model.Id">
+                                Delete
+                            </a>
+                        </h5>
+                    </div>
+                }
                 <div class="col-sm align-self-center">
                     <h5 class="mb-1 mt-1">
                         Number of supporters: <span id="@Model.Id-supporter-cnt">@Model.Supporters.Count</span>

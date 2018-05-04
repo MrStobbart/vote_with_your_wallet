@@ -50,12 +50,6 @@
     $('.support-button').on('click', function () {
         var causeId = $(this).attr('target-cause')
 
-
-        var userName = $('#username').text();
-        var tableSelector = '#' + causeId + '-supporter-names';
-        
-        
-
         var request = $.ajax({
             type: 'GET',
             url: '/Causes/Support/' + causeId,
@@ -64,6 +58,8 @@
 
         request.done(function (message) {
 
+            var userName = $('#username').text();
+            var tableSelector = '#' + causeId + '-supporter-names';
             var rowCount = $(tableSelector + '> tr').length;
 
             // Remove last list of supporters if more than 4 to make space for new
@@ -81,8 +77,6 @@
             var newCount = parseInt(currentCount) + 1;
             $('#' + targetCountId).text(newCount)
 
-            // Add name to the beginning of supporters (static atm)
-            
             console.log('supported')
         })
 

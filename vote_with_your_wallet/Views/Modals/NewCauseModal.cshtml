@@ -44,3 +44,9 @@
     </div>
 </div>
 
+<script>
+    @if (Model.Title != null || Model.Description != null || Model.CauseTarget != null)
+    {
+        @:window.onload = function () { $('#new-cause-modal').modal('show') }
+    }
+</script>

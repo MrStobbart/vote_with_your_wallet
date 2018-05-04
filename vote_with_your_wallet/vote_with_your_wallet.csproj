@@ -217,9 +217,11 @@
     <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Models\CausesViewModel.cs" />
     <Compile Include="Models\CauseViewModel.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\NewCauseViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

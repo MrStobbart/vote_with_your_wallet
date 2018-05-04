@@ -12,6 +12,7 @@
 @Html.Partial("~/Views/Home/Causes.cshtml", Model.CausesViewModel)
 @RenderPage("~/Views/Home/Contact.cshtml")
 
+<!-- Hidden field to get the username with JavaScript and update the view dynamically when cause is supported-->
 <div id="username" class=".d-none invisible">@ViewBag.UserName</div>
 
 <!--Modals-->

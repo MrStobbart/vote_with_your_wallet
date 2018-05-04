@@ -50,11 +50,21 @@
     $('.support-button').on('click', function () {
         var causeId = $(this).attr('target-cause')
 
+
         var userName = $('#username').text();
-        console.log('username X', userName);
-        console.log('#' + causeId + 'supporter-names');
-        console.log($('#' + causeId + 'supporter-names > tr:first'));
-        $('#' + causeId + '-supporter-names > tr:first').before('<tr><td scope= "row" >' + userName + '</td></tr>');
+        var tableSelector = '#' + causeId + '-supporter-names';
+        var rowCount = $(tableSelector + '> tr').length;
+
+        // Remove last list of supporters if more than 4 to make space for new
+        if (rowCount >= 5) {
+            console.log('remove entry')
+            $(tableSelector + ' tr:last').remove();
+        }
+
+        // Add user to supporter list
+        $(tableSelector + ' > tr:first').before('<tr><td scope= "row" >' + userName + '</td></tr>');
+
+        
 
         var request = $.ajax({
             type: 'GET',

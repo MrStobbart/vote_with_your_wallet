@@ -5,12 +5,14 @@
 }
 
 
+
 <!--One pager sections-->
 @RenderPage("~/Views/Home/Header.cshtml")
 @RenderPage("~/Views/Home/Information.cshtml")
 @Html.Partial("~/Views/Home/Causes.cshtml", Model.CausesViewModel)
 @RenderPage("~/Views/Home/Contact.cshtml")
 
+<div id="username" class=".d-none invisible">@ViewBag.UserName</div>
 
 <!--Modals-->
 @Html.Partial("~/Views/Home/NewCauseModal.cshtml", Model.NewCauseViewModel)

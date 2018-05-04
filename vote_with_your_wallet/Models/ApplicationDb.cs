@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using vote_with_your_wallet.Entities;
 
+
 namespace vote_with_your_wallet.Models
 {
     public class ApplicationDb : IdentityDbContext<ApplicationUser>

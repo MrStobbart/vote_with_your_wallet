@@ -8,10 +8,9 @@
     <div class="container">
         <div class="mx-auto text-center">
             <div id="accordion">
-                @for (var i = 0; i < Model.CauseViewModels.Count; i++)
+                @foreach (var CauseViewModel in Model.CauseViewModels)
                 {
-                    Model.CauseViewModels[i].Id = i;
-                    @Html.Partial("~/Views/Causes/Cause.cshtml", Model.CauseViewModels[i])
+                    @Html.Partial("~/Views/Causes/Cause.cshtml", CauseViewModel)
                 }
             </div>
             <div class="mt-5">

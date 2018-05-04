@@ -48,16 +48,33 @@
     
     // Update supporter when cause is supported 
     $('.support-button').on('click', function () {
-        var targetBaseId = $(this).attr('for')
+        var causeId = $(this).attr('target-cause')
 
         // Update supporter count
-        var targetCountIt = targetBaseId + '-cnt';
-        var currentCount = $('#' + targetCountIt).text();
+        var targetCountId = causeId + '-supporter-cnt';
+        var currentCount = $('#' + targetCountId).text();
         var newCount = parseInt(currentCount) + 1;
-        $('#' + targetCountIt).text(newCount)
+        $('#' + targetCountId).text(newCount)
 
+        // TODO post support
         // Add name to the beginning of supporters (static atm)
-        $('#' + targetBaseId + '-names > tbody > tr:first').before('<tr><td scope= "row" >Peter Barclay</td></tr>');
+        var userName = $('#username').text();
+        $('#' + causeId + 'supporter-names > tbody > tr:first').before('<tr><td scope= "row" >' + userName + '</td></tr>');
+
+        console.log('support request url /Causes/Support/' + causeId)
+        var request = $.ajax({
+            type: 'GET',
+            url: '/Causes/Support/' + causeId,
+
+        })
+
+        request.done(function (message) {
+            console.log('supported')
+        })
+
+        request.fail(function () {
+            console.log('support fail')
+        })
     });
 
     // Logout on button click logout

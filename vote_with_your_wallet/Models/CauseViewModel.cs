@@ -25,7 +25,7 @@ namespace vote_with_your_wallet.Models
             Id = cause.Id;
             Title = cause.Title;
             Description = cause.Description;
-            Supporters = cause.Supporters;
+            Supporters = cause.Supporters.ToList();
             CauseTarget = cause.CauseTarget;
         }
 

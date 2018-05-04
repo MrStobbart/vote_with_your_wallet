@@ -9,32 +9,60 @@ using System.Web;
 using System.Web.Mvc;
 using vote_with_your_wallet.Entities;
 using vote_with_your_wallet.Models;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace vote_with_your_wallet.Controllers
 {
     public class CausesController : Controller
     {
-        private ApplicationDb db = new ApplicationDb();
-
-        // GET: Causes
-        public async Task<ActionResult> Index()
+        private ApplicationDb _db;
+        public ApplicationDb db
         {
-            return View(await db.Causes.ToListAsync());
+            get
+            {
+                return _db ?? HttpContext.GetOwinContext().GetUserManager<ApplicationDb>();
+            }
+            private set
+            {
+                _db = value;
+            }
         }
 
-        // GET: Causes/Details/5
-        public async Task<ActionResult> Details(int? id)
+        private ApplicationUserManager _userManager;
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+
+        // GET: Causes/Support/5
+        public async Task<ActionResult> Support(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cause cause = await db.Causes.FindAsync(id);
-            if (cause == null)
+
+            bool UserAuthenticated = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+            var causeToUpdate = db.Causes.First(cause => cause.Id == id);
+
+            if (causeToUpdate != null && UserAuthenticated)
             {
-                return HttpNotFound();
+                var userName = User.Identity.Name;
+                var user = await UserManager.FindByNameAsync(userName);
+                causeToUpdate.Supporters.Add(user);
+                db.Causes.Attach(causeToUpdate);
+                //db.Entry(causeToUpdate).CurrentValues.SetValues(causeToUpdate);
+                db.SaveChanges();
             }
-            return View(cause);
+
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: Causes/Create
@@ -59,6 +87,8 @@ namespace vote_with_your_wallet.Controllers
 
                 db.Causes.Add(cause);
                 await db.SaveChangesAsync();
+                await Support(cause.Id);
+
                 return RedirectToAction("Index", "Home");
             }
 

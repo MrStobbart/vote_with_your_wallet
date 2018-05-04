@@ -12,32 +12,33 @@
                 </div>
                 <div class="col-sm">
                     <h5 class="mb-1 mt-1">
-                        <a class="btn btn-secondary" data-toggle="collapse" data-target="#collapse-one" aria-expanded="false" aria-controls="collapse-one">
+                        <a class="btn btn-secondary" data-toggle="collapse" data-target="#collapse-@Model.Id" aria-expanded="false" aria-controls="collapse-@Model.Id">
                             More information
                         </a>
                     </h5>
                 </div>
                 <div class="col-sm">
                     <h5 class="mb-1 mt-1">
-                        <a class="btn btn-secondary support-button" for="cause-one-supporter">
+                        <a class="btn btn-secondary support-button" target-cause="@Model.Id">
                             Support cause
                         </a>
                     </h5>
                 </div>
                 <div class="col-sm align-self-center">
                     <h5 class="mb-1 mt-1">
-                        Number of supporters: <span id="cause-one-supporter-cnt">3</span>
+                        Number of supporters: <span id="@Model.Id-supporter-cnt">@Model.Supporters.Count</span>
                     </h5>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="collapse-one" class="collapse" aria-labelledby="cause-one" data-parent="#accordion">
+    <div id="collapse-@Model.Id" class="collapse" aria-labelledby="cause-@Model.Id" data-parent="#accordion">
         <div class="card-body">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-8">
+                        <!--TODO Add target of cause here-->
                         @Model.Description
                         <div class="row justify-content-center mt-3">
                             <div class="col-1">
@@ -55,22 +56,19 @@
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <table id="cause-one-supporter-names" class="table table-sm">
+                        <table id="@Model.Id-supporter-names" class="table table-sm">
                             <thead>
                                 <tr>
                                     <th scope="col">Recent supporters</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td scope="row">Sam Dixon</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">Anna Campbell</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">Marek Meyer</td>
-                                </tr>
+                                @for(int i = 0; i < Model.Supporters.Count && i < 5; i++)
+                                {
+                                    <tr>
+                                        <td scope="row">@Model.Supporters[i].FullName</td>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>

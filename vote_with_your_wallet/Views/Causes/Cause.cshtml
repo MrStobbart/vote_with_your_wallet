@@ -1,5 +1,10 @@
 ﻿@using vote_with_your_wallet.Models
 @model CauseViewModel
+@{ 
+    string url = HttpContext.Current.Request.Url.AbsoluteUri;
+    string shareTextTwitter = "Please support the cause: " + Model.Title + " on the website " + url;
+    string shareTextReddit = "Please support the cause: " + Model.Title;
+}
 
 <div class="card" id="cause-card-@Model.Id">
     <div class="card-header" id="cause-@Model.Id">
@@ -52,16 +57,10 @@
                         @Model.Description
                         <div class="row justify-content-center mt-3">
                             <div class="col-1">
-                                <a href="#" target="_blank" class="fa fa-facebook"></a>
+                                <a href="https://twitter.com/intent/tweet?text=@shareTextTwitter" target="_blank" class="fa fa-twitter"></a>
                             </div>
                             <div class="col-1">
-                                <a href="#" target="_blank" class="fa fa-twitter"></a>
-                            </div>
-                            <div class="col-1">
-                                <a href="#" target="_blank" class="fa fa-reddit"></a>
-                            </div>
-                            <div class="col-1">
-                                <a href="#" target="_blank" class="fa fa-google"></a>
+                                <a href="https://www.reddit.com/submit?url=@url&title=@shareTextReddit" target="_blank" class="fa fa-reddit"></a>
                             </div>
                         </div>
                     </div>

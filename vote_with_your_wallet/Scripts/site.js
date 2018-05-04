@@ -63,7 +63,6 @@
 
         // Add user to supporter list
         $(tableSelector + ' > tr:first').before('<tr><td scope= "row" >' + userName + '</td></tr>');
-
         
 
         var request = $.ajax({
@@ -92,6 +91,25 @@
     // Delete cause when admin clicked delete button
     $('.delete-button').on('click', function () {
         console.log('delete')
+        var causeId = $(this).attr('target-cause')
+        var userName = $('#username').text();
+
+        var request = $.ajax({
+            type: 'GET',
+            url: '/Causes/Delete/' + causeId,
+
+        })
+
+        request.done(function (message) {
+
+            // Remove cause when request was successful
+            $('#cause-card-' + causeId).remove()
+            console.log('deleted')
+        })
+
+        request.fail(function () {
+            console.log('delete fail')
+        })
     })
 
     // Logout on button click logout

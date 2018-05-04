@@ -109,14 +109,22 @@ namespace vote_with_your_wallet.Controllers
 
             bool UserAuthenticated = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
             Cause causeToDelete = db.Causes.FirstOrDefault(cause => cause.Id == id);
+            
 
             if (id == null || causeToDelete == null || !UserAuthenticated)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            db.Causes.Remove(causeToDelete);
-            await db.SaveChangesAsync();
+            // Only let administrators delete causes
+            var userName = User.Identity.Name;
+            var user = await UserManager.FindByNameAsync(userName);
+            if (user.AccountType == Enums.AccountType.ADMINISTRATOR)
+            {
+                db.Causes.Remove(causeToDelete);
+                await db.SaveChangesAsync();
+            }
+            
             return RedirectToAction("Index", "Home");
         }
 

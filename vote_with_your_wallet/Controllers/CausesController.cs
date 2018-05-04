@@ -44,23 +44,29 @@ namespace vote_with_your_wallet.Controllers
         // GET: Causes/Support/5
         public async Task<ActionResult> Support(int? id)
         {
-            if (id == null)
+
+            bool UserAuthenticated = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+            var causeToUpdate = db.Causes.FirstOrDefault(cause => cause.Id == id);
+
+            if (id == null || causeToUpdate == null || !UserAuthenticated)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            bool UserAuthenticated = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
-            var causeToUpdate = db.Causes.First(cause => cause.Id == id);
+            var userName = User.Identity.Name;
+            var user = await UserManager.FindByNameAsync(userName);
 
-            if (causeToUpdate != null && UserAuthenticated)
+            // Only add user as support when cause is not already supported by the user
+            var alreadySupported = causeToUpdate.Supporters.FirstOrDefault(u => u.UserName == userName);
+            if(alreadySupported != null)
             {
-                var userName = User.Identity.Name;
-                var user = await UserManager.FindByNameAsync(userName);
-                causeToUpdate.Supporters.Add(user);
-                db.Causes.Attach(causeToUpdate);
-                //db.Entry(causeToUpdate).CurrentValues.SetValues(causeToUpdate);
-                db.SaveChanges();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                    
             }
+
+
+            causeToUpdate.Supporters.Add(user);
+            db.SaveChanges();
 
             return RedirectToAction("Index", "Home");
         }

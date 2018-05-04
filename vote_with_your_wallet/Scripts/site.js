@@ -50,18 +50,12 @@
     $('.support-button').on('click', function () {
         var causeId = $(this).attr('target-cause')
 
-        // Update supporter count
-        var targetCountId = causeId + '-supporter-cnt';
-        var currentCount = $('#' + targetCountId).text();
-        var newCount = parseInt(currentCount) + 1;
-        $('#' + targetCountId).text(newCount)
-
-        // TODO post support
-        // Add name to the beginning of supporters (static atm)
         var userName = $('#username').text();
-        $('#' + causeId + 'supporter-names > tbody > tr:first').before('<tr><td scope= "row" >' + userName + '</td></tr>');
+        console.log('username X', userName);
+        console.log('#' + causeId + 'supporter-names');
+        console.log($('#' + causeId + 'supporter-names > tr:first'));
+        $('#' + causeId + '-supporter-names > tr:first').before('<tr><td scope= "row" >' + userName + '</td></tr>');
 
-        console.log('support request url /Causes/Support/' + causeId)
         var request = $.ajax({
             type: 'GET',
             url: '/Causes/Support/' + causeId,
@@ -69,6 +63,14 @@
         })
 
         request.done(function (message) {
+            // Update supporter count
+            var targetCountId = causeId + '-supporter-cnt';
+            var currentCount = $('#' + targetCountId).text();
+            var newCount = parseInt(currentCount) + 1;
+            $('#' + targetCountId).text(newCount)
+
+            // Add name to the beginning of supporters (static atm)
+            
             console.log('supported')
         })
 

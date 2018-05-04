@@ -215,7 +215,9 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
+    <Compile Include="Models\CausesViewModel.cs" />
     <Compile Include="Models\CauseViewModel.cs" />
+    <Compile Include="Models\NewCauseViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NavigationModel.cs" />
@@ -291,10 +293,10 @@
     <Content Include="Views\Home\NewCauseModal.cshtml" />
     <Content Include="Views\Home\SignUpModal.cshtml" />
     <Content Include="Views\Home\Navigation.cshtml" />
+    <Content Include="Views\Causes\Cause.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Causes\" />
     <Folder Include="Views\Navigation\" />
     <Folder Include="Views\Role\" />
   </ItemGroup>

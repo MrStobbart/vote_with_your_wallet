@@ -8,11 +8,11 @@
 <!--One pager sections-->
 @RenderPage("~/Views/Home/Header.cshtml")
 @RenderPage("~/Views/Home/Information.cshtml")
-@RenderPage("~/Views/Home/Causes.cshtml")
+@Html.Partial("~/Views/Home/Causes.cshtml", Model.CausesViewModel)
 @RenderPage("~/Views/Home/Contact.cshtml")
 
 
 <!--Modals-->
-@Html.Partial("~/Views/Home/NewCauseModal.cshtml", Model.CauseViewModel)
+@Html.Partial("~/Views/Home/NewCauseModal.cshtml", Model.NewCauseViewModel)
 @Html.Partial("~/Views/Home/SignUpModal.cshtml", Model.RegisterViewModel)
 @Html.Partial("~/Views/Home/LoginModal.cshtml", Model.LoginViewModel)

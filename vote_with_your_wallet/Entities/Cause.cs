@@ -9,7 +9,7 @@ namespace vote_with_your_wallet.Entities
     public class Cause
     {
         public Cause() {
-            Supporters = new HashSet<ApplicationUser>();
+            Supporters = new List<ApplicationUser>();
         }
         
         public int Id { get; set; }
@@ -23,7 +23,7 @@ namespace vote_with_your_wallet.Entities
         [Required]
         public string Description { get; set; }
 
-        public virtual ICollection<ApplicationUser> Supporters { get; set; }
+        public virtual List<ApplicationUser> Supporters { get; set; }
 
 
     }

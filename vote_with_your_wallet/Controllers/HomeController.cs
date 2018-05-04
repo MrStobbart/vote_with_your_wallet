@@ -1,13 +1,33 @@
 ﻿using Microsoft.AspNet.Identity.Owin;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using vote_with_your_wallet.Entities;
 using vote_with_your_wallet.Models;
 
 namespace vote_with_your_wallet.Controllers
 {
     public class HomeController : Controller
     {
+
+        private ApplicationDb db = new ApplicationDb();
+        private HomeViewModel model;
+
+        private ApplicationUserManager _userManager;
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
 
         public async Task<ActionResult> Index()
         {
@@ -26,9 +46,19 @@ namespace vote_with_your_wallet.Controllers
                 }
             }
 
-            HomeViewModel model = new HomeViewModel();
+            model = new HomeViewModel();
+            List<Cause> causes = await db.Causes.ToListAsync();
+            model.CausesViewModel = new CausesViewModel(causes);
 
-            if(TempData["RegisterViewModel"] != null)
+            GetModelsFromTempDataIfAvailable();
+            
+
+            return View(model);
+        }
+
+        private void GetModelsFromTempDataIfAvailable()
+        {
+            if (TempData["RegisterViewModel"] != null)
             {
                 model.RegisterViewModel = (RegisterViewModel)TempData["RegisterViewModel"];
             }
@@ -38,25 +68,14 @@ namespace vote_with_your_wallet.Controllers
                 model.LoginViewModel = (LoginViewModel)TempData["LoginViewModel"];
             }
 
-            if (TempData["CauseViewModel"] != null)
+            if (TempData["NewCauseViewModel"] != null)
             {
-                model.CauseViewModel = (CauseViewModel)TempData["CauseViewModel"];
+                model.NewCauseViewModel = (NewCauseViewModel)TempData["NewCauseViewModel"];
             }
 
-            return View(model);
-        }
-
-        private ApplicationUserManager _userManager;
-
-        public ApplicationUserManager UserManager
-        {
-            get
+            if (TempData["CausesViewModel"] != null)
             {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
+                model.CausesViewModel = (CausesViewModel)TempData["CausesViewModel"];
             }
         }
 

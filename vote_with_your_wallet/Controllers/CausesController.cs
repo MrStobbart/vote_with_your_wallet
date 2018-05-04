@@ -48,7 +48,7 @@ namespace vote_with_your_wallet.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(CauseViewModel model)
+        public async Task<ActionResult> Create(NewCauseViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -62,7 +62,7 @@ namespace vote_with_your_wallet.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            TempData["CauseViewModel"] = model;
+            TempData["NewCauseViewModel"] = model;
             return RedirectToAction("Index", "Home");
         }
 

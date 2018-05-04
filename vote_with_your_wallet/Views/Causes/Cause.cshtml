@@ -1,0 +1,89 @@
+﻿@using vote_with_your_wallet.Models
+@model CauseViewModel
+
+<div class="card">
+    <div class="card-header" id="cause-@Model.Id">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm align-self-center">
+                    <h5 class="mb-1 mt-1">
+                        @Model.Title
+                    </h5>
+                </div>
+                <div class="col-sm">
+                    <h5 class="mb-1 mt-1">
+                        <a class="btn btn-secondary" data-toggle="collapse" data-target="#collapse-one" aria-expanded="false" aria-controls="collapse-one">
+                            More information
+                        </a>
+                    </h5>
+                </div>
+                <div class="col-sm">
+                    <h5 class="mb-1 mt-1">
+                        <a class="btn btn-secondary support-button" for="cause-one-supporter">
+                            Support cause
+                        </a>
+                    </h5>
+                </div>
+                <div class="col-sm align-self-center">
+                    <h5 class="mb-1 mt-1">
+                        Number of supporters: <span id="cause-one-supporter-cnt">3</span>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="collapse-one" class="collapse" aria-labelledby="cause-one" data-parent="#accordion">
+        <div class="card-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8">
+                        @Model.Description
+                        <div class="row justify-content-center mt-3">
+                            <div class="col-1">
+                                <a href="#" target="_blank" class="fa fa-facebook"></a>
+                            </div>
+                            <div class="col-1">
+                                <a href="#" target="_blank" class="fa fa-twitter"></a>
+                            </div>
+                            <div class="col-1">
+                                <a href="#" target="_blank" class="fa fa-reddit"></a>
+                            </div>
+                            <div class="col-1">
+                                <a href="#" target="_blank" class="fa fa-google"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <table id="cause-one-supporter-names" class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Recent supporters</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="row">Sam Dixon</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">Anna Campbell</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">Marek Meyer</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="delete-cause">
+                        <button type="button" class="close float-right" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
